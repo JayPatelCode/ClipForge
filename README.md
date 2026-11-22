@@ -168,7 +168,7 @@ Three finished clips, with JSON sidecars, appear in `output/`.
 ./.venv/bin/python clipper.py --file episode.mp4 --campaign example-campaign
 
 # Re-render one clip with an exact, human-approved hook title
-./.venv/bin/python clipper.py --file episode.mp4 --top 1 --hook "AND THAT'S WHY I GOT FIRED"
+./.venv/bin/python clipper.py --file episode.mp4 --top 1 --hook "AND THAT IS WHEN EVERYTHING CHANGED"
 
 # Batch mode: a folder of campaign subfolders, processed in one run
 ./.venv/bin/python clipper.py --batch-dir incoming/ --top 3
@@ -265,7 +265,7 @@ ClipForge/
   requirements.txt      faster-whisper + numpy
   fonts/                Anton + Montserrat ExtraBold (caption fonts)
   profiles/             campaign settings the tool applies
-    assets/             watermark files used by profiles
+    assets/             optional: watermark files used by profiles
   output/               finished clips land here (created per run)
 ```
 
