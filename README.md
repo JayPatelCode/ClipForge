@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
-![Platform: Ubuntu | Linux](https://img.shields.io/badge/Platform-Ubuntu%20%7C%20Linux-lightgrey)
+![Platform: Windows | macOS | Linux](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
 ![Runs 100% locally](https://img.shields.io/badge/Runs-100%25%20locally-orange)
 
 **A free, fully local auto-clipper for long videos.**
@@ -91,8 +91,9 @@ campaign, licence, or permission to clip.
 
 ## Requirements
 
-- Ubuntu or another Linux with Python **3.10+**
-- **ffmpeg** (your distro build, with libass) installed system-wide
+- Windows, macOS, or Linux with Python **3.10+**
+- **ffmpeg** with libass installed system-wide (the standard build for
+  each platform includes it; the Windows note below names the right one)
 - About **2-4 GB** of disk for the tool and the speech model, and
   **15-20 GB** free if you keep raw recordings around
 - Internet once, on the first run, to download the speech model
@@ -100,20 +101,54 @@ campaign, licence, or permission to clip.
 
 ## Install
 
+### Ubuntu / Linux
+
 ```bash
 sudo apt update && sudo apt install -y ffmpeg python3-venv
 ./install.sh
 ```
 
 The installer creates a `.venv`, installs `faster-whisper` and `numpy`,
-and checks ffmpeg. Finished clips are small (about 4-30 MB each). The tool
-only reads the files you give it; it never keeps or uploads your footage.
+and checks ffmpeg.
+
+### macOS
+
+Install ffmpeg and Python with Homebrew, then set up the same way:
+
+```bash
+brew install ffmpeg python
+python3 -m venv .venv
+./.venv/bin/pip install --upgrade pip
+./.venv/bin/pip install -r requirements.txt
+```
+
+(`./install.sh` also works on macOS once ffmpeg is installed; it only
+uses python3, pip, and an ffmpeg check.)
+
+### Windows
+
+Use PowerShell. Install Python and the full ffmpeg build (it includes
+libass, which the burned-in captions need), then set up the environment:
+
+```powershell
+winget install Python.Python.3.12
+winget install Gyan.FFmpeg
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Finished clips are small (about 4-30 MB each). The tool only reads the
+files you give it; it never keeps or uploads your footage.
 
 ## Quick start
 
 ```bash
 ./.venv/bin/python clipper.py --file episode.mp4 --top 3
 ```
+
+On Windows, use `.\.venv\Scripts\python.exe` in place of
+`./.venv/bin/python` in every command in this README.
 
 Three finished clips, with JSON sidecars, appear in `output/`.
 
@@ -226,7 +261,7 @@ the run: it is logged in `batch-summary.json` and processing continues.
 ```
 ClipForge/
   clipper.py            the tool (single file, no package to install)
-  install.sh            one-time Ubuntu installer
+  install.sh            one-time installer (Ubuntu / Linux / macOS)
   requirements.txt      faster-whisper + numpy
   fonts/                Anton + Montserrat ExtraBold (caption fonts)
   profiles/             campaign settings the tool applies
