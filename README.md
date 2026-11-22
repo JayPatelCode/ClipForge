@@ -310,7 +310,6 @@ MIT. Free to use, copy, and change. See `LICENSE`.
 
 ## Author
 
-Built by **Jay Patel** ([@JayPatelCode](https://github.com/JayPatelCode)),
-who runs the NovelVerse Hindi explainer channel and the ViralFrame Clips
-clipping project. ClipForge grew out of real campaign work: every feature
-in it exists because a real clip needed it.
+Built by **Jay Patel** ([@JayPatelCode](https://github.com/JayPatelCode)).
+ClipForge grew out of real campaign work: every feature in it exists
+because a real clip needed it.
