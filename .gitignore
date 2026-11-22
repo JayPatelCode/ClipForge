@@ -1,0 +1,14 @@
+# Python virtual environment and caches
+.venv/
+__pycache__/
+*.pyc
+
+# Whisper model cache and outputs (regenerated / made per run)
+output/
+incoming/
+*.mp4
+*.mov
+*.mkv
+
+# Local notes, never committed
+*.log
